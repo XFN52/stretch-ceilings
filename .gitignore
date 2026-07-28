@@ -1,0 +1,33 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor & IDE files
+.vscode/
+.idea/
+*.swp
+
+# Temporary & script files
+*.log
+*.tmp
+*.bak
+*.txt
+*.py
+record_media*.js
+scratch/
+
+# Exclude photo & media files
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.bmp
+*.ico
+media/
+uploads/
+images/
+
+# Node & package manager logs
+node_modules/

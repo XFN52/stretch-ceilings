@@ -1,0 +1,1121 @@
+/* CSS ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ */
+:root {
+  --color-dark: #1c1c1e;
+  --color-light-bg: #f4f4f5;
+  --color-white: #ffffff;
+  --color-border: #e4e4e7;
+  --color-border-dark: #27272a;
+  --color-text-main: #18181b;
+  --color-text-muted: #71717a;
+  --color-text-light: #f4f4f5;
+  --color-text-light-muted: #a1a1aa;
+  
+  /* Единственный акцентный цвет — насыщенный синий для кнопок и цифр */
+  --color-accent: #0052cc;
+  --color-accent-hover: #003d99;
+
+  --font-heading: 'Oswald', 'Roboto Condensed', 'Arial Narrow', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --radius-main: 4px;
+}
+
+/* СБРОС И ОСНОВНЫЕ СТИЛИ (Mobile First 360px) */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-main);
+  background-color: var(--color-white);
+  overflow-x: hidden;
+  max-width: 100vw;
+  padding-bottom: 60px; /* Отступ для мобильной прилипшей полосы */
+}
+
+/* Ограничение длины и выравнивание многострочного текста */
+p, li, dd {
+  text-align: left;
+}
+
+/* Типографические стандарты для цифр и цен */
+.num, .price-highlight, .tile-price, .cell-price, .gallery-price, .lead-phone, .header-phone {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.price-highlight {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  min-width: 44px;
+  padding: 0 24px;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: var(--radius-main);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Контейнеры */
+.container {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.section-light {
+  background-color: var(--color-white);
+}
+
+.section-dark {
+  background-color: var(--color-dark);
+  color: var(--color-text-light);
+  border-bottom: 2px solid var(--color-border-dark);
+}
+
+.section-lead {
+  background-color: var(--color-dark);
+  color: var(--color-text-light);
+  border-bottom: none;
+}
+
+/* Заголовки секций */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-intro {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.text-light {
+  color: var(--color-text-light);
+}
+
+.text-light-muted {
+  color: var(--color-text-light-muted);
+}
+
+/* 0. МОБИЛЬНАЯ ПРИЛИПШАЯ ПОЛОСА */
+.mobile-sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--color-dark);
+  display: flex;
+  z-index: 1000;
+  border-top: 2px solid var(--color-border-dark);
+}
+
+.mobile-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.mobile-btn-call {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.mobile-btn-wa {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  border-left: 1px solid var(--color-border-dark);
+}
+
+/* 1. ШАПКА */
+.header {
+  height: 64px;
+  background-color: var(--color-white);
+  border-bottom: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-dark);
+}
+
+.logo-subtext {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.header-contact {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.header-phone {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.header-note {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* 2. ПЕРВЫЙ ЭКРАН (HERO) */
+.hero-section {
+  position: relative;
+  background-color: var(--color-dark);
+  background-image: url('images/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  border-bottom: 2px solid var(--color-border-dark);
+}
+
+/* Тёмная подложка под текст (без размытия / без блюра) */
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(28, 28, 30, 0.92) 0%, rgba(28, 28, 30, 0.98) 100%);
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--color-text-light);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-light-muted);
+  margin-bottom: 32px;
+}
+
+/* 3 Плитки с готовыми ценами */
+.hero-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.tile-card {
+  background-color: #27272a;
+  border: 2px solid #3f3f46;
+  border-radius: var(--radius-main);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tile-label {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-text-light-muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+.tile-price {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-btn {
+  width: 100%;
+}
+
+.hero-btn-note {
+  font-size: 0.875rem;
+  color: var(--color-text-light-muted);
+}
+
+/* 3. ТАБЛИЦА ЦЕН */
+.table-wrapper {
+  width: 100%;
+  border: 2px solid var(--color-dark);
+  border-radius: var(--radius-main);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.price-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: var(--color-white);
+}
+
+.price-table th,
+.price-table td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.price-table th {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--color-light-bg);
+  color: var(--color-dark);
+  border-bottom: 2px solid var(--color-dark);
+}
+
+.price-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cell-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  width: 27%;
+}
+
+.cell-price {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  width: 27%;
+}
+
+.cell-desc {
+  font-size: 0.875rem;
+  line-height: 1.3;
+  color: var(--color-text-main);
+  width: 46%;
+  word-wrap: break-word;
+}
+
+/* Честный блок "Входит / Отдельно" */
+.price-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.price-details-card {
+  border: 2px solid var(--color-dark);
+  border-radius: var(--radius-main);
+  padding: 24px;
+}
+
+.card-included {
+  background-color: var(--color-light-bg);
+}
+
+.card-extra {
+  background-color: var(--color-white);
+}
+
+.details-title {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: var(--color-dark);
+}
+
+.details-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.details-list li {
+  font-size: 1rem;
+  padding-left: 20px;
+  position: relative;
+}
+
+.details-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+/* 4. КАЛЬКУЛЯТОР */
+.calc-box {
+  background-color: #27272a;
+  border: 2px solid #3f3f46;
+  border-radius: var(--radius-main);
+  padding: 24px;
+}
+
+.calc-inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--color-text-light-muted);
+}
+
+.form-input, .form-select {
+  height: 48px;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 1.125rem;
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-main);
+  outline: none;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--color-accent);
+}
+
+.calc-result-panel {
+  background-color: var(--color-dark);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-main);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.calc-result-text {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  color: var(--color-text-light);
+}
+
+.calc-submit-btn {
+  width: 100%;
+}
+
+.calc-disclaimer {
+  font-size: 0.875rem;
+  color: var(--color-text-light-muted);
+}
+
+/* 5. ПОРЯДОК РАБОТЫ */
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.step-card {
+  border: 2px solid var(--color-dark);
+  border-radius: var(--radius-main);
+  padding: 24px;
+  background-color: var(--color-white);
+}
+
+.step-num {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.step-heading {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+}
+
+.step-text {
+  font-size: 1rem;
+  color: var(--color-text-main);
+}
+
+/* 6. РАБОТЫ (ГАЛЕРЕЯ MASONRY-ПОДОБНАЯ) */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.gallery-item {
+  border: 2px solid #3f3f46;
+  border-radius: var(--radius-main);
+  background-color: #27272a;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 240px;
+  flex: 1 1 auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-bottom: 2px solid #3f3f46;
+}
+
+.photo-placeholder {
+  height: 220px;
+  background-color: #18181b;
+  border-bottom: 2px solid #3f3f46;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: var(--color-text-light-muted);
+}
+
+.placeholder-tag {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 2px 8px;
+  border-radius: var(--radius-main);
+  margin-bottom: 12px;
+}
+
+.placeholder-info {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--color-text-light);
+}
+
+.gallery-meta {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #27272a;
+  flex-shrink: 0;
+}
+
+.gallery-specs {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+}
+
+.gallery-price {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+/* 7. АККОРДЕОН FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 2px solid var(--color-dark);
+  border-radius: var(--radius-main);
+  background-color: var(--color-white);
+}
+
+.faq-question {
+  padding: 20px;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 48px;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-dark);
+  font-weight: 700;
+}
+
+.faq-item[open] .faq-question::after {
+  content: "—";
+}
+
+.faq-answer {
+  padding: 0 20px 20px 20px;
+  font-size: 1rem;
+  color: var(--color-text-main);
+  border-top: 1px dashed var(--color-border);
+  padding-top: 16px;
+}
+
+/* 8. ЗОНА ВЫЕЗДА */
+.cities-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.city-tag {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  background-color: #27272a;
+  color: var(--color-text-light);
+  border: 1px solid #3f3f46;
+  padding: 8px 16px;
+  border-radius: var(--radius-main);
+}
+
+.coverage-note {
+  font-size: 1rem;
+  color: var(--color-text-light-muted);
+  border-left: 4px solid var(--color-accent);
+  padding-left: 16px;
+}
+
+/* 9. ФОРМА ЗАЯВКИ */
+.lead-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.lead-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.lead-desc {
+  font-size: 1.125rem;
+  color: var(--color-text-light-muted);
+  margin-bottom: 24px;
+}
+
+.lead-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lead-phone {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.lead-wa-link {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  text-decoration: underline;
+}
+
+.lead-form {
+  background-color: #27272a;
+  border: 2px solid #3f3f46;
+  border-radius: var(--radius-main);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-submit-btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.form-subtext {
+  font-size: 0.875rem;
+  color: var(--color-text-light-muted);
+}
+
+/* 10. ПОДВАЛ */
+.footer {
+  background-color: var(--color-dark);
+  color: var(--color-text-light-muted);
+  padding-top: 32px;
+  padding-bottom: 32px;
+  border-top: 2px solid var(--color-border-dark);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.footer-text, .footer-info {
+  font-size: 0.875rem;
+}
+
+.footer-info a {
+  color: var(--color-text-light);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   АДАПТИВНЫЕ МЕДИА-ЗАПРОСЫ (Progressive Enhancement)
+   ========================================================================== */
+
+/* БРЕЙКПОИНТ 480px */
+@media (min-width: 480px) {
+  .hero-tiles {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .tile-card {
+    flex: 1 1 calc(50% - 12px);
+  }
+
+  .calc-inputs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-group:last-child {
+    grid-column: span 2;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* БРЕЙКПОИНТ 768px (Десктоп / Планшет) */
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0; /* Скрываем нижний мобильный отступ */
+  }
+
+  .mobile-sticky-bar {
+    display: none; /* Скрываем мобильную плашку */
+  }
+
+  .header-contact {
+    display: flex;
+  }
+
+  .hero-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+    max-width: 800px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-tiles {
+    flex-wrap: nowrap;
+    gap: 20px;
+    max-width: 700px;
+  }
+
+  .tile-card {
+    flex: 1;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .hero-btn {
+    width: auto;
+    padding: 0 40px;
+  }
+
+  .price-details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .table-scroll-hint {
+    display: none;
+  }
+
+  .calc-inputs-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .form-group:last-child {
+    grid-column: auto;
+  }
+
+  .calc-result-panel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .calc-submit-btn {
+    width: auto;
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item-large,
+  .item-wide {
+    grid-column: span 2;
+  }
+
+  .lead-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* БРЕЙКПОИНТ 1024px (Максимальный десктоп) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1140px;
+  }
+
+  .section-title {
+    font-size: 3rem;
+  }
+
+  .hero-title {
+    font-size: 5rem;
+  }
+}
+
+/* ДЕТАЛИЗИРОВАННАЯ СИСТЕМА СКРОЛЛ-АНИМАЦИЙ */
+
+/* 1. Анимированная акцентная линия под заголовками секций */
+.section-title {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.section-title.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--color-accent);
+  transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.25s;
+}
+
+.section-title.is-visible::after {
+  width: 100%;
+}
+
+/* 2. Различные типы анимаций появления */
+.anim-fade-up,
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1), transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.anim-fade-scale {
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
+  transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1), transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.anim-slide-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.75s cubic-bezier(0.25, 1, 0.5, 1), transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.anim-fade-up.is-visible,
+.anim-fade-scale.is-visible,
+.anim-slide-left.is-visible,
+.animate-on-scroll.is-visible,
+.stagger-child.is-visible {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Автоматическая задержка для дочерних элементов */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+.delay-4 { transition-delay: 0.6s; }
+
+/* ИНТЕРАКТИВНЫЕ МИКРО-АНИМАЦИИ КАРТОЧЕК И КНОПОК */
+.tile-card, .gallery-item, .step-card, .price-details-card, .faq-item {
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.tile-card:hover, .gallery-item:hover, .step-card:hover, .price-details-card:hover, .faq-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+}
+
+.gallery-img {
+  transition: transform 0.65s ease;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.04);
+}
+
+.city-tag {
+  transition: transform 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+
+.city-tag:hover {
+  transform: translateY(-3px) scale(1.04);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.price-table tbody tr {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.price-table tbody tr:hover {
+  background-color: rgba(0, 82, 204, 0.05);
+}
+
+/* СВЕРХДИНАМИЧЕСКИЕ АНИМАЦИИ: SHIMMER, RIPPLE, PULSE GLOW */
+
+/* Блик и вспышка при поялении карточек галереи */
+.gallery-item {
+  position: relative;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: left 0.75s ease;
+}
+
+.gallery-item.is-visible::after {
+  animation: shimmerSweep 1.2s ease-out 0.3s;
+}
+
+@keyframes shimmerSweep {
+  0% { left: -100%; }
+  100% { left: 160%; }
+}
+
+/* Пульсирующее свечение главной кнопки */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 rgba(0, 82, 204, 0.4);
+  animation: buttonGlowPulse 2.5s infinite;
+}
+
+@keyframes buttonGlowPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 82, 204, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(0, 82, 204, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 82, 204, 0); }
+}
+
+/* Анимация клика (Ripple) */
+.btn .ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: rippleAnimation 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnimation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Анимация плавного уменьшения шапки при скролле */
+.header {
+  transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.header.is-scrolled {
+  height: 54px;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
