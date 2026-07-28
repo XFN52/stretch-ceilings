@@ -8,26 +8,16 @@ Desktop.ini
 .idea/
 *.swp
 
-# Temporary & script files
+# Temporary & recording script files
 *.log
 *.tmp
 *.bak
-*.txt
 *.py
 record_media*.js
 scratch/
 
-# Exclude photo & media files
-*.png
-*.jpg
-*.jpeg
-*.webp
-*.gif
-*.bmp
-*.ico
+# Exclude generated screenshot dumps & demo videos
 media/
-uploads/
-images/
 
 # Node & package manager logs
 node_modules/
